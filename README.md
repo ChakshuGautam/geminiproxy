@@ -1,5 +1,6 @@
 <div align="center">
   <h1>geminiproxy</h1>
+  <br/>
 </div>
 
 ![Gemini API Proxy Demo](./geminiproxy.gif)
