@@ -1,0 +1,14 @@
+[Unit]
+Description=Gemini API Proxy Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=root
+WorkingDirectory=/opt/geminiproxy
+ExecStart=/opt/geminiproxy/geminiproxy
+
+[Install]
+WantedBy=multi-user.target
