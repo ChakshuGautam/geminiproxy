@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  geminiproxy:
+    build: .
+    ports:
+      - "8081:8081"
+    volumes:
+      # Mount the keys file from the host into the container
+      # IMPORTANT: Ensure gemini.keys exists in the project root directory.
+      - ./gemini.keys:/app/gemini.keys:ro # Mount as read-only
+    container_name: geminiproxy
