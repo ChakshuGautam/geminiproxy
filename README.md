@@ -34,8 +34,30 @@ A simple Go proxy server for the Gemini API that provides automatic API key rota
 
 3. Build and run:
    ```bash
-   go run ./cmd/main.go
+   go build -o geminiproxy ./cmd/geminiproxy
+   # Then run the executable
+   ./geminiproxy
    ```
+   Alternatively, to run the test client:
+   ```bash
+   go run ./cmd/test_client.go
+   ```
+
+## Docker Setup
+
+Alternatively, you can build and run the proxy using Docker and Docker Compose.
+
+1.  **Prerequisites:** Ensure you have Docker and Docker Compose installed.
+2.  **Create `gemini.keys`:** As described in the main setup, create a `gemini.keys` file in the project root directory containing your Gemini API keys (one per line). **Important:** Add `gemini.keys` to your `.gitignore` file.
+3.  **Build and Run with Docker Compose:**
+    ```bash
+    docker-compose up --build -d
+    ```
+    This command will build the Docker image (if it doesn't exist) and start the proxy container in the background. The proxy will be accessible at `http://localhost:8081`.
+4.  **Stopping the Container:**
+    ```bash
+    docker-compose down
+    ```
 
 ## Usage
 
@@ -60,7 +82,7 @@ func main() {
 }
 ```
 
-A complete example demonstrating API key rotation across multiple requests is provided in the [main.go](./cmd/main.go) file. When you run it, you'll see each request using a different API key from your key pool.
+A complete example demonstrating API key rotation across multiple requests is provided in the [test_client.go](./cmd/test_client.go) file. When you run it, you'll see each request using a different API key from your key pool.
 
 ## License
 
