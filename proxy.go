@@ -80,8 +80,11 @@ func NewProxyServer(keyManager *KeyManager, port int) *ProxyServer {
 	targetURL, _ := url.Parse(GeminiAPIEndpoint)
 	proxy := httputil.NewSingleHostReverseProxy(targetURL)
 
-	// Add the API key
+	// Add the API key and remove Authorization header
 	proxy.Director = func(req *http.Request) {
+		// Remove Authorization header if present (added for litellm compatibility)
+		req.Header.Del("Authorization")
+
 		apiKey := keyManager.GetKey()
 		req.URL.Scheme = targetURL.Scheme
 		req.URL.Host = targetURL.Host

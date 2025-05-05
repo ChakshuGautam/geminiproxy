@@ -3,7 +3,7 @@
   <br/>
 </div>
 
-![Gemini API Proxy Demo](./geminiproxy.gif)
+![Gemini API Proxy Demo](./docs/geminiproxy.gif)
 
 A simple Go proxy server for the Gemini API that provides automatic API key rotation.
 
@@ -83,6 +83,48 @@ func main() {
 ```
 
 A complete example demonstrating API key rotation across multiple requests is provided in the [test_client.go](./cmd/test_client.go) file. When you run it, you'll see each request using a different API key from your key pool.
+
+### Usage with Cline
+
+Start the server in whatever way you prefer (Docker, Docker Compose, or directly). Then just setup like below
+
+![Cline Setup Proxy](./docs/cline.png)
+
+### Usage with LiteLLM
+
+```bash
+docker compose up --build -d
+
+# The builds the geminiproxy image and starts the LiteLLM server with a DB and Promeetheus
+```
+
+This will start the proxy server on port 8081. LLM Proxy will be available at `http://localhost:4000`. The UI would be available at `http://localhost:4000/ui` and the palyground at `http://localhost:4000/ui/?page=llm-playground`.
+
+![LiteLLM Setup Proxy](./docs/litellm.png)
+
+If you want to test the API directly, you can use the following curl command:
+
+```bash
+curl --location 'http://0.0.0.0:4000/chat/completions' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer sk-1234' \
+--data '{
+    "model": "gemini-2.5-flash-preview-04-17",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful math tutor. Guide the user through the solution step by step."
+        },
+        {
+            "role": "user",
+            "content": "how can I solve 8x + 7 = -23"
+        }
+    ]
+}'
+```
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request for any bugs, features, or improvements.
 
 ## License
 
