@@ -4,5 +4,10 @@ model_list:
       model: gemini/gemini-2.5-flash-preview-04-17
       api_base: "http://geminiproxy:8081/v1beta/models/gemini-2.5-flash-preview-04-17"
       api_key: "any-api-key-will-do"
+  - model_name: gemini-2.5-pro
+    litellm_params:
+      model: gemini/gemini-2.5-pro-exp-03-25
+      api_base: "http://geminiproxy:8081/v1beta/models/gemini-2.5-pro-exp-03-25"
+      api_key: "any-api-key-will-do"
 litellm_settings:
   callbacks: ["prometheus"]

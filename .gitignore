@@ -10,6 +10,7 @@ gemini.keys
 *.dll
 *.so
 *.dylib
+geminiproxy
 
 # Test binary, built with `go test -c`
 *.test
@@ -45,5 +46,3 @@ __debug_bin
 .vscode/
 *.swp
 *.swo
-
-geminiproxy
