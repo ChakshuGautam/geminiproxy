@@ -1,4 +1,4 @@
-name: Go CI with Lint
+name: Go CI Integration with Lint
 
 on:
   push:
