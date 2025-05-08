@@ -42,17 +42,15 @@ A simple Go proxy server for the Gemini API that provides automatic API key rota
 
 To install geminiproxy as a system service (on Linux systems with systemd):
 
-1. Make sure you have created the `gemini.keys` file with your API keys.
-
-2. Run the installation script with sudo:
+1. Run the installation script with sudo:
    ```bash
    sudo chmod +x install.sh
    sudo ./install.sh
    ```
 
-3. The service will be installed to `/opt/geminiproxy/` and started automatically.
+2. The service will be installed to `/opt/geminiproxy/` and started automatically.
 
-4. You can manage the service with standard systemd commands:
+3. You can manage the service with standard systemd commands:
    ```bash
    sudo systemctl status geminiproxy  # Check status
    sudo systemctl start geminiproxy   # Start service
@@ -61,7 +59,7 @@ To install geminiproxy as a system service (on Linux systems with systemd):
    sudo journalctl -u geminiproxy     # View logs
    ```
 
-5. To uninstall the service:
+4. To uninstall the service:
    ```bash
    sudo chmod +x uninstall.sh
    sudo ./uninstall.sh
