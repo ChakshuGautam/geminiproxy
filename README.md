@@ -13,6 +13,7 @@ A simple Go proxy server for the Gemini API that provides automatic API key rota
 - Automatically rotates through multiple API keys in round-robin fashion
 - Transparent to clients - they don't need to provide API keys
 - Compatible with go-genai client library
+- Can be installed as a system service
 
 ## Setup
 
@@ -58,6 +59,33 @@ Alternatively, you can build and run the proxy using Docker and Docker Compose.
     ```bash
     docker-compose down
     ```
+
+## Installing as a System Service
+
+To install geminiproxy as a system service (on Linux systems with systemd):
+
+1. Run the installation script with sudo:
+   ```bash
+   sudo chmod +x install.sh
+   sudo ./install.sh
+   ```
+
+2. The service will be installed to `/opt/geminiproxy/` and started automatically.
+
+3. You can manage the service with standard systemd commands:
+   ```bash
+   sudo systemctl status geminiproxy  # Check status
+   sudo systemctl start geminiproxy   # Start service
+   sudo systemctl stop geminiproxy    # Stop service
+   sudo systemctl restart geminiproxy # Restart service
+   sudo journalctl -u geminiproxy     # View logs
+   ```
+
+4. To uninstall the service:
+   ```bash
+   sudo chmod +x uninstall.sh
+   sudo ./uninstall.sh
+   ```
 
 ## Usage
 
