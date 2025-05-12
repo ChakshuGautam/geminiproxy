@@ -46,3 +46,6 @@ __debug_bin
 .vscode/
 *.swp
 *.swo
+
+#node_modules
+**/node_modules
