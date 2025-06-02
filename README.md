@@ -126,6 +126,33 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any bugs, features, or improvements.
 
+## Interactive TUI Mode
+
+This proxy includes a Terminal User Interface (TUI) for interactive monitoring and management. When you run the proxy directly (e.g., `go run cmd/geminiproxy/main.go` or `./geminiproxy`), the TUI will start automatically.
+
+**Features:**
+- **Dashboard:** View real-time statistics including:
+    - Handler status and uptime.
+    - Recent proxy errors.
+    - Overall proxy performance (total requests, success/failure rates, active connections, average latency).
+    - Performance and status of individual API keys.
+    - System information (proxy uptime, Go process memory usage).
+- **Settings:**
+    - Configure TUI refresh rate.
+    - Adjust the number of recent errors displayed.
+    - Change the display format for API keys.
+    - Enable or disable individual API keys in real-time.
+
+**Keybindings:**
+- `Ctrl+C`: Quit the application.
+- `Ctrl+N`: Switch to the next tab (Dashboard -> Settings).
+- `Ctrl+P`: Switch to the previous tab (Settings -> Dashboard).
+- `Tab` / `Shift+Tab`: Navigate between UI elements within a page.
+- `Arrow Keys`: Navigate within dropdowns or lists.
+- `Enter` / `Space`: Select an item, open a dropdown, or toggle a checkbox.
+
+The TUI provides an easy way to observe the proxy's behavior and manage your API keys without needing to restart the application.
+
 ## License
 
 MIT
